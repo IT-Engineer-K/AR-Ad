@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
-<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<head>
+    <!-- A-Frameを読み込む -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- AR.jsを読み込む -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+</head>
 
 <body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-        <a-marker type="pattern" url="pattern-kuma.patt">
-            <a-box position="0 -1 0" scale="1 1 1" color="grey"></a-box>
+    <a-scene embedded arjs vr-mode-ui="enabled: false">
+        <!-- 3Dモデルを読み込む -->
+        <a-assets>
+            <a-asset-item id="tiger" src="model.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- マーカーの.pattファイルを読み込む  -->
+        <a-marker type="pattern" url="pattern-9fb7ae54e2a27cde.patt">
+            <!-- 3Dモデルを呼び出す -->
+            <a-entity gltf-model="#tiger" animation-mixer></a-entity>
         </a-marker>
+
+        <!-- カメラを追加 -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
